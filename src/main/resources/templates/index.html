@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <h2>It works!</h2>
+
+    <!-- add https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 to the POM-->
+    <div sec:authorize="hasAuthority('ADMIN')">
+        Administrators will see this text. You can display a navbar here.
+    </div>
+
+    <div sec:authorize="hasAuthority('USER')">
+        Users will see this text. You can display a navbar here.
+    </div>
+
+<p>
+<a href="/logout">Logout</a>
+</p>
+
+</body>
+</html>
