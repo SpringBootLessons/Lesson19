@@ -27,16 +27,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     {
         //Restricts access to routes
         http.authorizeRequests()
-                .antMatchers("/").access("hasAnyAuthority('USER','ADMIN')")
+                .antMatchers("/")
+                .access("hasAnyAuthority('USER','ADMIN')")
                 .antMatchers("/admin").access("hasAuthority('ADMIN')")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login").permitAll()
+                .formLogin().loginPage("/login").permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login").permitAll()
-                .and().httpBasic();
+                .logoutSuccessUrl("/login").permitAll();
         }
 
     @Override
